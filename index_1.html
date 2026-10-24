@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Что тормозит твой блог: тест</title>
+<meta name="description" content="Тест из 6 вопросов: узнай, что тормозит твой блог, и получи план на неделю.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Что тормозит твой блог? Тест">
+<meta property="og:description" content="6 вопросов, 2 минуты. Узнай, куда смотреть в первую очередь. Тест от Арины Розовой.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#FBF1EA; --surface:#FFFFFF; --ink:#3A0C16; --muted:#7A5560; --accent:#A5243D; --accent-ink:#FFFFFF;
+  --line:#E6CFC8; --frame:#E9D3CC; --frame-on:#A5243D;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#4A0D1A; --surface:#5C1424; --ink:#FBEFE0; --muted:#E0BFB6; --accent:#E3B04B; --accent-ink:#2A0710;
+    --line:#7A2A3B; --frame:#6B2133; --frame-on:#E3B04B;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#4A0D1A; --surface:#5C1424; --ink:#FBEFE0; --muted:#E0BFB6; --accent:#E3B04B; --accent-ink:#2A0710;
+  --line:#7A2A3B; --frame:#6B2133; --frame-on:#E3B04B;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.page{max-width:640px;margin:0 auto;padding:28px 20px 56px}
+h1,h2,h3{font-family:"Unbounded","Golos Text",system-ui,sans-serif;margin:0;font-weight:700;line-height:1.15;letter-spacing:-0.01em}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+[hidden]{display:none !important}
+
+.cast{margin:28px 0 8px;padding:0;list-style:none;text-align:center}
+.cast li{font-family:"Unbounded","Golos Text",sans-serif;font-weight:700;line-height:1.1;padding:10px 0;border-top:1px solid var(--line)}
+.cast li:last-child{border-bottom:1px solid var(--line)}
+.cast li:nth-child(odd){font-size:clamp(26px,7.5vw,40px)}
+.cast li:nth-child(even){font-size:clamp(22px,6.5vw,34px);color:var(--accent)}
+.credits{font-size:15px;color:var(--muted);text-align:center;margin-top:10px}
+.intro h1{font-size:clamp(28px,7.5vw,40px);margin-bottom:12px}
+.intro p{color:var(--muted)}
+.btn{display:inline-block;width:100%;margin-top:26px;padding:16px 22px;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:18px}
+.btn:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);margin-top:12px}
+
+.frames{display:grid;gap:4px;margin:6px 0 14px}
+.frames i{height:12px;border-radius:2px;background:var(--frame)}
+.frames i.on{background:var(--frame-on)}
+.scene{font-size:15px;color:var(--muted);margin-bottom:10px}
+.q{font-size:clamp(21px,5.6vw,27px);margin-bottom:22px;outline:none}
+.opts{display:grid;gap:10px}
+.opt{width:100%;text-align:left;padding:15px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);transition:border-color .12s,transform .12s}
+.opt:hover{border-color:var(--accent)}
+.opt:active{transform:scale(.99)}
+.opt.picked{border-color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.back{margin-top:18px;background:none;border:0;color:var(--muted);padding:8px 0;text-decoration:underline;text-underline-offset:3px}
+
+.result h2{font-size:clamp(34px,10.5vw,56px);color:var(--accent);margin:6px 0 8px;outline:none}
+.kicker{color:var(--muted);font-size:15px}
+.tag{font-size:20px;font-weight:600;margin-bottom:10px}
+.lead{color:var(--muted);margin-bottom:22px}
+.block{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.block h3{font-size:17px;margin-bottom:10px}
+.block ol{margin:0;padding-left:22px}
+.block li{margin:8px 0}
+.bars{display:grid;gap:10px;margin-top:6px}
+.bar{display:grid;grid-template-columns:128px 1fr 44px;align-items:center;gap:10px;font-size:15px}
+.bar .track{height:10px;border-radius:5px;background:var(--frame);overflow:hidden}
+.bar .fill{display:block;height:100%;background:var(--accent);border-radius:5px}
+.bar.top{font-weight:600}
+.note{font-size:14px;color:var(--muted);margin-top:14px}
+.foot{margin-top:36px;text-align:center}
+@media (prefers-reduced-motion: reduce){.opt{transition:none}}
+</style>
+</head>
+<body>
+<main class="page">
+
+<section id="start" class="intro">
+  <h1>Что тормозит твой блог?</h1>
+  <p>Шесть вопросов, две минуты. Станет ясно, куда в блоге смотреть в первую очередь.</p>
+  <ul class="cast" aria-label="Куда мы заглянем">
+    <li>Начало рилса</li><li>Позиционирование</li><li>Подача</li><li>Живая связь</li><li>Система</li>
+  </ul>
+  <p class="credits">Тест от Арины Розовой, креативного режиссёра из Нью-Йорка</p>
+  <button class="btn" id="go" type="button">Пройти тест</button>
+</section>
+
+<section id="quiz" hidden>
+  <div class="frames" id="frames" aria-hidden="true"></div>
+  <p class="scene" id="scene"></p>
+  <h2 class="q" id="qtext" tabindex="-1"></h2>
+  <div class="opts" id="opts"></div>
+  <button class="back" id="back" type="button">Назад</button>
+</section>
+
+<section id="result" class="result" hidden aria-live="polite"></section>
+<p class="note foot">Тест собирает анонимную статистику посещений через GoatCounter: без cookie и без персональных данных.</p>
+</main>
+<script>
+const DATA = {"keys": ["hook", "position", "delivery", "connection", "system"], "arch": {"hook": {"name": "Начало рилса", "tagline": "Люди уходят, не дойдя до сути", "lead": "Зрителю не хватает причины остаться: первые секунды не дают ни конфликта, ни вопроса, ни обещания. Остальные рилсы могут быть сильными, но до них просто не доходят.", "check": "Посмотри первые три секунды последних десяти рилсов и честно ответь, захотел бы ты смотреть дальше.", "plan": ["Выпиши первые фразы и вычеркни те, где нет конфликта или вопроса.", "Перепиши начало по формуле «контраст плюс обещание», например «Я режиссёр, и вот почему твои рилсы не досматривают».", "Поставь главный кадр с первой секунды и продублируй мысль текстом на экране."]}, "position": {"name": "Позиционирование", "tagline": "Зритель не понимает, зачем на тебя подписываться", "lead": "Профиль выглядит набором разных обещаний. Человек открывает его, не видит, что получит, и уходит без подписки.", "check": "Покажи шапку и закреплённые рилсы другу и спроси, чем ты занимаешься. Если ответ не совпал с твоим, проблема здесь.", "plan": ["Сформулируй одной фразой: кто ты, для кого и что человек получит.", "Оставь в шапке одно обещание вместо нескольких.", "Закрепи три рилса, которые это обещание показывают."]}, "delivery": {"name": "Подача и содержание", "tagline": "Идеи хорошие, но история провисает", "lead": "Темы выбраны удачно, но внутри ролика нет движения: проблема, поворот, вывод. Зритель теряет нить и уходит на середине.", "check": "Пересмотри два последних рилса и отметь секунду, на которой тебе самому стало скучно. Там история провисает.", "plan": ["В каждом рилсе пропиши проблему в начале, поворот в середине и вывод в конце.", "Убери всё, что не двигает историю.", "Замени общий совет одним живым примером."]}, "connection": {"name": "Живая связь", "tagline": "Люди смотрят, но не доверяют и молчат", "lead": "Блог работает как витрина, а не как разговор. Людям нечего почувствовать, поэтому они молчат и не возвращаются.", "check": "Посчитай, в скольких последних рилсах ты говоришь о себе или показываешь лицо. Если почти нигде, связь слабая.", "plan": ["Один рилс из четырёх снимай с личной историей и лицом в кадре.", "Заканчивай рилс вопросом и отвечай на комментарии в первый час.", "Пиши подписчикам лично раз в неделю."]}, "system": {"name": "Система и воронка", "tagline": "Рилсы выходят, но не ведут к результату", "lead": "Ролики сами по себе работают, но у блога нет пути дальше: у рилсов нет цели, нет лидмагнита и нет графика.", "check": "Возьми последние пять рилсов и подпиши цель каждого: подписка, лидмагнит или продажа. Если не получилось, система не выстроена.", "plan": ["Определи цель каждого рилса: подписка, лидмагнит или продажа.", "Добавь лидмагнит по кодовому слову.", "Зафиксируй дни публикаций и план на месяц."]}}, "q": [{"q": "Рилс набрал мало просмотров. Что ты думаешь первым делом?", "a": {"hook": "Люди не досматривают, начало слабое", "position": "Наверное, непонятно, про что мой блог", "delivery": "Тема не зашла или подача скучная", "connection": "Меня мало знают, нет связи с аудиторией", "system": "Я снимаю нерегулярно, поэтому охваты скачут"}}, {"q": "Что ты чаще всего замечаешь в реакции людей?", "a": {"hook": "Проматывают, почти не досматривают", "position": "Спрашивают, кто я и чем занимаюсь", "delivery": "Хвалят отдельные рилсы, но не подписываются", "connection": "Подписчики есть, но молчат", "system": "Подписываются, но не покупают и не записываются"}}, {"q": "Что тебе труднее всего при съёмке?", "a": {"hook": "Придумать начало, которое зацепит", "position": "Объяснить одной фразой, о чём мой блог", "delivery": "Построить историю: что в начале, что в конце", "connection": "Говорить в камеру свободно и показывать себя живым", "system": "Держать ритм и вести блог к заработку"}}, {"q": "Что увидит незнакомец, открыв твой профиль?", "a": {"hook": "Много роликов, но ни один не цепляет с первого кадра", "position": "Шапку, из которой непонятно, что я предлагаю", "delivery": "Хорошие посты, но без общей линии", "connection": "Красивую картинку без живого человека", "system": "Ролики без пути к покупке или к чему-то ещё"}}, {"q": "Как ты планируешь контент?", "a": {"hook": "Придумываю хуки по ходу съёмки", "position": "Пишу обо всём, что приходит в голову", "delivery": "Выбираю темы, но историю не продумываю", "connection": "Снимаю то, что удобно, личного мало", "system": "Тема и график есть, но нет цели у каждого рилса"}}, {"q": "Что ты хочешь изменить в блоге за месяц больше всего?", "a": {"hook": "Чтобы рилсы досматривали", "position": "Чтобы людям сразу было понятно, кто я", "delivery": "Чтобы рилсы были интереснее и полезнее", "connection": "Чтобы подписчики писали и доверяли", "system": "Чтобы блог начал приносить деньги"}}]};
+const $ = (id) => document.getElementById(id);
+/* Статистика GoatCounter: впиши свой код сайта вместо ВСТАВЬ_КОД, например "arina-test" */
+const GC_CODE = "ВСТАВЬ_КОД";
+const trackQueue = [];
+function track(path, title){
+  const item = {path: path, title: title, event: true};
+  if(window.goatcounter && typeof window.goatcounter.count === "function"){
+    try{ window.goatcounter.count(item); }catch(e){}
+  } else { trackQueue.push(item); }
+}
+(function loadCounter(){
+  if(!GC_CODE || GC_CODE === "ВСТАВЬ_КОД") return;
+  window.goatcounter = {endpoint: "https://" + GC_CODE + ".goatcounter.com/count"};
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://gc.zgo.at/count.js";
+  s.onload = function(){
+    trackQueue.splice(0).forEach(function(i){ try{ window.goatcounter.count(i); }catch(e){} });
+  };
+  document.head.appendChild(s);
+})();
+let idx = 0;
+let answers = [];
+
+function shuffle(a){
+  const r = a.slice();
+  for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
+  return r;
+}
+function show(id){
+  ["start","quiz","result"].forEach(s => { $(s).hidden = (s !== id); });
+  window.scrollTo(0,0);
+}
+function renderQ(){
+  const total = DATA.q.length;
+  const q = DATA.q[idx];
+  const fr = $("frames");
+  fr.textContent = "";
+  fr.style.gridTemplateColumns = "repeat(" + total + ",1fr)";
+  for(let i=0;i<total;i++){
+    const el = document.createElement("i");
+    if(i <= idx) el.className = "on";
+    fr.appendChild(el);
+  }
+  $("scene").textContent = "Сцена " + (idx+1) + " из " + total;
+  track("view-q" + (idx+1), "Вопрос " + (idx+1));
+  $("qtext").textContent = q.q;
+  const box = $("opts");
+  box.textContent = "";
+  shuffle(DATA.keys).forEach(k => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "opt" + (answers[idx] === k ? " picked" : "");
+    b.textContent = q.a[k];
+    b.addEventListener("click", () => pick(k));
+    box.appendChild(b);
+  });
+  $("back").hidden = idx === 0;
+  $("qtext").focus({preventScroll:true});
+}
+function pick(k){
+  answers[idx] = k;
+  if(idx < DATA.q.length - 1){ idx++; renderQ(); window.scrollTo(0,0); }
+  else { renderResult(); }
+}
+function compute(){
+  const score = {}, first = {};
+  DATA.keys.forEach(k => { score[k] = 0; first[k] = 99; });
+  answers.forEach((k,i) => { score[k]++; if(first[k] === 99) first[k] = i; });
+  const order = DATA.keys.slice().sort((a,b) => score[b]-score[a] || first[a]-first[b]);
+  return {score, order};
+}
+function textBlock(title, text){
+  const wrap = document.createElement("div"); wrap.className = "block";
+  const h = document.createElement("h3"); h.textContent = title; wrap.appendChild(h);
+  const p = document.createElement("p"); p.textContent = text; wrap.appendChild(p);
+  return wrap;
+}
+function stepsBlock(title, items){
+  const wrap = document.createElement("div"); wrap.className = "block";
+  const h = document.createElement("h3"); h.textContent = title; wrap.appendChild(h);
+  const ol = document.createElement("ol");
+  items.forEach(t => { const li = document.createElement("li"); li.textContent = t; ol.appendChild(li); });
+  wrap.appendChild(ol);
+  return wrap;
+}
+function renderResult(){
+  const {score, order} = compute();
+  const top = DATA.arch[order[0]];
+  const second = DATA.arch[order[1]];
+  track("result-" + order[0], "Результат: " + top.name); track("finish", "Дошли до результата");
+  const root = $("result");
+  root.textContent = "";
+
+  const k = document.createElement("p"); k.className = "kicker"; k.textContent = "Что тормозит твой блог"; root.appendChild(k);
+  const h = document.createElement("h2"); h.tabIndex = -1; h.textContent = top.name; root.appendChild(h);
+  const t = document.createElement("p"); t.className = "tag"; t.textContent = top.tagline; root.appendChild(t);
+  const l = document.createElement("p"); l.className = "lead"; l.textContent = top.lead; root.appendChild(l);
+
+  root.appendChild(textBlock("Что проверить в первую очередь", top.check));
+  root.appendChild(stepsBlock("План на неделю", top.plan));
+
+  const bw = document.createElement("div"); bw.className = "block";
+  const bh = document.createElement("h3"); bh.textContent = "Как распределились твои ответы"; bw.appendChild(bh);
+  const bars = document.createElement("div"); bars.className = "bars";
+  order.forEach((key,i) => {
+    const pct = Math.round(score[key] / DATA.q.length * 100);
+    const row = document.createElement("div"); row.className = "bar" + (i === 0 ? " top" : "");
+    const n = document.createElement("span"); n.textContent = DATA.arch[key].name;
+    const tr = document.createElement("span"); tr.className = "track";
+    const f = document.createElement("span"); f.className = "fill"; f.style.width = pct + "%"; tr.appendChild(f);
+    const v = document.createElement("span"); v.textContent = pct + "%";
+    row.appendChild(n); row.appendChild(tr); row.appendChild(v); bars.appendChild(row);
+  });
+  bw.appendChild(bars);
+  const sn = document.createElement("p"); sn.className = "note";
+  sn.textContent = "Следом посмотри: " + second.name + ". Когда поправишь главное, возьмись за это.";
+  bw.appendChild(sn);
+  root.appendChild(bw);
+
+  const copy = document.createElement("button"); copy.type = "button"; copy.className = "btn"; copy.textContent = "Скопировать результат";
+  copy.addEventListener("click", () => {
+    track("copy-result", "Скопировать результат");
+    const text = "Мой блог тормозит: " + top.name + ". Следом: " + second.name + ". Тест от @directorrozova";
+    copyText(text).then(ok => { copy.textContent = ok ? "Скопировано" : "Не получилось скопировать, сделай скриншот"; });
+  });
+  root.appendChild(copy);
+  const again = document.createElement("button"); again.type = "button"; again.className = "btn ghost"; again.textContent = "Пройти ещё раз";
+  again.addEventListener("click", () => { track("restart", "Пройти ещё раз"); restart(); });
+  root.appendChild(again);
+
+  show("result");
+  h.focus({preventScroll:true});
+}
+function copyText(text){
+  return new Promise(resolve => {
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(() => resolve(true), () => resolve(fallbackCopy(text)));
+      } else { resolve(fallbackCopy(text)); }
+    }catch(e){ resolve(fallbackCopy(text)); }
+  });
+}
+function fallbackCopy(text){
+  try{
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly",""); ta.style.position = "absolute"; ta.style.left = "-9999px";
+    document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    return ok;
+  }catch(e){ return false; }
+}
+function restart(){ idx = 0; answers = []; show("quiz"); renderQ(); }
+$("go").addEventListener("click", () => { track("test-start", "Начало теста"); restart(); });
+$("back").addEventListener("click", () => { if(idx > 0){ idx--; renderQ(); } });
+</script>
+</body>
+</html>
